@@ -1,0 +1,6 @@
+name: DeathSwapCommunity
+version: ${project.version}
+main: us.midius.deathswapcommunity.DeathSwapCommunity
+api-version: 1.17
+authors: [ Midiuslive ]
+website: m
