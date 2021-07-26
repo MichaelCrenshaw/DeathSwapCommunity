@@ -23,10 +23,11 @@ public class DeathSwapAdd implements CommandExecutor {
         if (args.length == 1) {
             if (plugin.getExemptPlayers().remove(args[0])){
                 sender.sendMessage("Player removed");
+                return true;
             } else {
                 sender.sendMessage("Player not found");
+                return false;
             }
-            return true;
         } else {
             sender.sendMessage("Please add an actual argument");
             return false;
