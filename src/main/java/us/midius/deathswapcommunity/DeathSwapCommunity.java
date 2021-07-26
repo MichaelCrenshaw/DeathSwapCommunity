@@ -1,7 +1,10 @@
 package us.midius.deathswapcommunity;
 
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scoreboard.Scoreboard;
+import org.bukkit.util.io.BukkitObjectInputStream;
 
 import java.util.ArrayList;
 
@@ -17,6 +20,9 @@ public final class DeathSwapCommunity extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
+        Scoreboard scoreboard = Bukkit.getScoreboardManager().getMainScoreboard();
+        scoreboard.getObjective("kills").unregister();
+        scoreboard.getObjective("health").unregister();
         deathSwapManager = new DeathSwapManager(this);
         deathSwapAnnouncer = new DeathSwapAnnouncer(deathSwapManager, this);
         this.getCommand("ds").setExecutor(new DeathSwap());
@@ -31,6 +37,9 @@ public final class DeathSwapCommunity extends JavaPlugin {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
+        Scoreboard scoreboard = Bukkit.getScoreboardManager().getMainScoreboard();
+        scoreboard.getObjective("kills").unregister();
+        scoreboard.getObjective("health").unregister();
     }
 
     public int getMinDelay() {
