@@ -22,6 +22,7 @@ public class DeathSwapStart implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         deathSwapManager.getPlayerList().clear();
+        plugin.setEmergencyStop(false);
         for (Player player:Bukkit.getOnlinePlayers()) {
             deathSwapManager.getPlayerList().add(player);
         }

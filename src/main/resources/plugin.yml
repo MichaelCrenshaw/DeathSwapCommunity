@@ -26,3 +26,6 @@ commands:
   ds-add:
     description: Add previously exempt player back into DS game
     aliases: deathswap-add
+  ds-stop:
+    description: Stop an existing Death Swap game
+    aliases: deathswap-stop
