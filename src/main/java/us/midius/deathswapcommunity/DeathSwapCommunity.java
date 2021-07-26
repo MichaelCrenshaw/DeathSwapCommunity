@@ -21,8 +21,12 @@ public final class DeathSwapCommunity extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         Scoreboard scoreboard = Bukkit.getScoreboardManager().getMainScoreboard();
-        scoreboard.getObjective("kills").unregister();
-        scoreboard.getObjective("health").unregister();
+        try {
+            scoreboard.getObjective("kills").unregister();
+            scoreboard.getObjective("health").unregister();
+        } catch (NullPointerException e) {
+            Bukkit.getConsoleSender().sendMessage("At least one objective did not need to be removed, this is expected behavior.");
+        }
         deathSwapManager = new DeathSwapManager(this);
         deathSwapAnnouncer = new DeathSwapAnnouncer(deathSwapManager, this);
         this.getCommand("ds").setExecutor(new DeathSwap());
