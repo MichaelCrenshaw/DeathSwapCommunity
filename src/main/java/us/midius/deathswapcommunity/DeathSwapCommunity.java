@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public final class DeathSwapCommunity extends JavaPlugin {
 
-    private ArrayList<Player> exemptPlayers;
+    private ArrayList<Player> exemptPlayers = new ArrayList<Player>();
     private int minDelay = 40;
     private int maxDelay = 120;
     private boolean emergencyStop = false;
