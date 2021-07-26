@@ -20,8 +20,8 @@ public class DeathSwapClear implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        plugin.setExemptPlayers(null);
-        deathSwapManager.removeExempt(null);
+        plugin.setExemptPlayers(new ArrayList<Player>());
+        deathSwapManager.removeExempt(plugin.getExemptPlayers());
         sender.sendMessage("Exemptions removed");
         return true;
     }
