@@ -3,4 +3,20 @@ version: ${project.version}
 main: us.midius.deathswapcommunity.DeathSwapCommunity
 api-version: 1.17
 authors: [ Midiuslive ]
-website: m
+website:
+commands:
+  ds:
+    description: How to use the Death Swap plugin
+    aliases: deathswap
+  ds-start:
+    description: Start Death Swap round
+    aliases: deathswap-start
+  ds-delay:
+    description: Delay between swaps [int]{min delay} [int]{max delay}
+    aliases: deathswap-delay
+  ds-remove:
+    description: Remove a player from the Death Swap game
+    aliases: deathswap-remove
+  ds-clear:
+    description: Add a player to the Death Swap game
+    aliases: deathswap-add
