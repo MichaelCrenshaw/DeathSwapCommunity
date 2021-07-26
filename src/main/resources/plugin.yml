@@ -18,5 +18,11 @@ commands:
     description: Remove a player from the Death Swap game
     aliases: deathswap-remove
   ds-clear:
-    description: Add a player to the Death Swap game
+    description: Clear list of exempt players
+    aliases: deathswap-clear
+  ds-list:
+    description: Lists exempt players
+    aliases: deathswap-list
+  ds-add:
+    description: Add previously exempt player back into DS game
     aliases: deathswap-add
