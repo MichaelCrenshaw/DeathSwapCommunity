@@ -12,11 +12,12 @@ public final class DeathSwapCommunity extends JavaPlugin {
     private int maxDelay = 120;
     private boolean emergencyStop = false;
     private DeathSwapAnnouncer deathSwapAnnouncer;
+    private DeathSwapManager deathSwapManager;
 
     @Override
     public void onEnable() {
         // Plugin startup logic
-        DeathSwapManager deathSwapManager = new DeathSwapManager(this);
+        deathSwapManager = new DeathSwapManager(this);
         deathSwapAnnouncer = new DeathSwapAnnouncer(deathSwapManager, this);
         this.getCommand("ds").setExecutor(new DeathSwap());
         this.getCommand("ds-start").setExecutor(new DeathSwapStart(deathSwapManager, this));

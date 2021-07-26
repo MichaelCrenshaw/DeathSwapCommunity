@@ -22,8 +22,8 @@ public class DeathSwapManager implements Runnable{
 
     public DeathSwapManager(DeathSwapCommunity plugin) {
         this.plugin = plugin;
-        Objective health = Bukkit.getScoreboardManager().getMainScoreboard().registerNewObjective("health", Criterias.HEALTH, "Health", RenderType.HEARTS);
-        health.setDisplaySlot(DisplaySlot.PLAYER_LIST);
+//        Objective health = Bukkit.getScoreboardManager().getMainScoreboard().registerNewObjective("health", Criterias.HEALTH, "Health", RenderType.HEARTS);
+        Bukkit.getScoreboardManager().getMainScoreboard().getObjective("health").setDisplaySlot(DisplaySlot.PLAYER_LIST);
         this.kills = Bukkit.getScoreboardManager().getMainScoreboard().registerNewObjective("kills", "dummy", "Kills");
     }
 
