@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class DeathSwapManager implements Runnable{
 
-    private ArrayList<Player> playerList = (ArrayList<Player>) Bukkit.getOnlinePlayers();
+    private ArrayList<Player> playerList;
     private DeathSwapCommunity plugin;
     private Objective kills;
 
@@ -77,5 +77,13 @@ public class DeathSwapManager implements Runnable{
         for (Player player: exemptList) {
             playerList.remove(player);
         }
+    }
+
+    public ArrayList<Player> getPlayerList() {
+        return playerList;
+    }
+
+    public void setPlayerList(ArrayList<Player> playerList) {
+        this.playerList = playerList;
     }
 }

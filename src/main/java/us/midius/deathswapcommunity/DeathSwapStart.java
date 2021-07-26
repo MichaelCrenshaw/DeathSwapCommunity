@@ -4,7 +4,10 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
+
+import java.util.ArrayList;
 
 public class DeathSwapStart implements CommandExecutor {
 
@@ -18,6 +21,7 @@ public class DeathSwapStart implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        deathSwapManager.setPlayerList((ArrayList<Player>) Bukkit.getOnlinePlayers());
         deathSwapManager.removeExempt(plugin.getExemptPlayers());
         Bukkit.broadcastMessage("Death swap is starting in ten seconds, get ready!");
         Bukkit.getScheduler().runTaskLater(plugin, deathSwapManager, 200);
