@@ -7,10 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.scoreboard.Criterias;
-import org.bukkit.scoreboard.DisplaySlot;
-import org.bukkit.scoreboard.Objective;
-import org.bukkit.scoreboard.RenderType;
+import org.bukkit.scoreboard.*;
 
 import java.util.ArrayList;
 
@@ -23,7 +20,6 @@ public class DeathSwapManager implements Runnable{
     public DeathSwapManager(DeathSwapCommunity plugin) {
         this.plugin = plugin;
         Objective health = Bukkit.getScoreboardManager().getMainScoreboard().registerNewObjective("health", Criterias.HEALTH, "Health", RenderType.HEARTS);
-//        Bukkit.getScoreboardManager().getMainScoreboard().getObjective("health").setDisplaySlot(DisplaySlot.PLAYER_LIST);
         this.kills = Bukkit.getScoreboardManager().getMainScoreboard().registerNewObjective("kills", "dummy", "Kills");
     }
 
@@ -62,7 +58,7 @@ public class DeathSwapManager implements Runnable{
         Player player = event.getEntity().getPlayer();
         int index = playerList.indexOf(player) -1;
         if (index == -1) { index = playerList.size(); }
-        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "scoreboard " + event.getEntity().getPlayer().getName() + " add 1");
+        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "scoreboard " + playerList.get(index).getName() + " add 1");
         player.setGameMode(GameMode.SPECTATOR);
         event.setDeathMessage(event.getDeathMessage() + "\n" + player.getName() + " died to " + playerList.get(index).getName());
         playerList.remove(player);
@@ -71,6 +67,9 @@ public class DeathSwapManager implements Runnable{
 
     public void printGameEnd(Player winner) {
         Bukkit.broadcastMessage("The winner is " + winner.getName() + "!" + "\n Top killers: \n" + Bukkit.getScoreboardManager().getMainScoreboard().getScores("kills"));
+        Scoreboard scoreboard = Bukkit.getScoreboardManager().getMainScoreboard();
+        scoreboard.getObjective("kills").unregister();
+        this.kills = Bukkit.getScoreboardManager().getMainScoreboard().registerNewObjective("kills", "dummy", "Kills");
     }
 
     public void removeExempt (ArrayList<Player> exemptList) {
