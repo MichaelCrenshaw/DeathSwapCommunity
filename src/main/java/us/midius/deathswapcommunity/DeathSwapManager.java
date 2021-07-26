@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class DeathSwapManager implements Runnable{
 
-    private ArrayList<Player> playerList;
+    private ArrayList<Player> playerList = new ArrayList<Player>();
     private DeathSwapCommunity plugin;
     private Objective kills;
 

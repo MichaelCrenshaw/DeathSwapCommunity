@@ -22,11 +22,11 @@ public class DeathSwapStart implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         for (Player player:Bukkit.getOnlinePlayers()) {
-            try {
-                deathSwapManager.getPlayerList().clear();
-            } catch (NullPointerException e) {
-                Bukkit.getConsoleSender().sendMessage("First startup of Death Swap, no players removed from list.");
-            }
+//            try {
+            deathSwapManager.getPlayerList().clear();
+//            } catch (NullPointerException e) {
+//                Bukkit.getConsoleSender().sendMessage("First startup of Death Swap, no players removed from list.");
+//            }
             deathSwapManager.getPlayerList().add(player);
         }
         deathSwapManager.removeExempt(plugin.getExemptPlayers());
