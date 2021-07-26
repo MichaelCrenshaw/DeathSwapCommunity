@@ -22,7 +22,7 @@ public final class DeathSwapCommunity extends JavaPlugin {
         this.getCommand("ds-start").setExecutor(new DeathSwapStart(deathSwapManager, this));
         this.getCommand("ds-delay").setExecutor(new DeathSwapDelay(this));
         this.getCommand("ds-remove").setExecutor(new DeathSwapRemove(deathSwapManager, this));
-        this.getCommand("ds-add").setExecutor(new DeathSwapClear(this));
+        this.getCommand("ds-clear").setExecutor(new DeathSwapClear(this));
     }
 
     @Override
