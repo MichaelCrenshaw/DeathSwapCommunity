@@ -33,8 +33,8 @@ public class DeathSwapManager implements Runnable{
             Location firstLoc = playerList.get(0).getLocation();
             for (int i = 0; i > playerList.size(); i++) {
                 if (i != playerList.size()) {
-                    Player player = playerList.get(i).getPlayer();
-                    Location location =playerList.get(i+1).getPlayer().getLocation();
+                    Player player = playerList.get(i);
+                    Location location = playerList.get(i+1).getLocation();
                     player.teleport(location);
                     playerList.get(i).getPlayer().sendMessage("You swapped with " + playerList.get(i+1).getName());
                 } else {
