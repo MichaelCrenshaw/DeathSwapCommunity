@@ -33,7 +33,7 @@ public class DeathSwapManager implements Runnable{
             if (playerList.size() > 1) {
                 Location firstLoc = playerList.get(0).getLocation();
                 for (int i = 0; i <= playerList.size(); i++) {
-                    if (i != playerList.size()) {
+                    if (i < playerList.size()) {
                         Player player = playerList.get(i);
                         Location location = playerList.get(i + 1).getLocation();
                         player.teleport(location);
@@ -41,9 +41,10 @@ public class DeathSwapManager implements Runnable{
                     } else {
                         playerList.get(i).teleport(firstLoc);
                         playerList.get(i).getPlayer().sendMessage("You swapped with " + playerList.get(0).getName());
+                        Bukkit.getScheduler().runTaskLater(plugin, plugin.getDeathSwapAnnouncer(), makeDelay());
+                        return;
                     }
                 }
-                Bukkit.getScheduler().runTaskLater(plugin, plugin.getDeathSwapAnnouncer(), makeDelay());
             } else {
                 printGameEnd(playerList.get(0));
                 return;
