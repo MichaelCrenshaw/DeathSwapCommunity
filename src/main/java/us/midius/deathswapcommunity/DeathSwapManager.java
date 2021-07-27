@@ -30,17 +30,12 @@ public class DeathSwapManager implements Runnable{
             playerList.clear();
             return;
         } else {
-            Bukkit.broadcastMessage("else statement hit");
             if (playerList.size() > 1) {
-                Bukkit.broadcastMessage("if statement hit");
                 Location firstLoc = playerList.get(0).getLocation();
-                for (int i = 0; i > playerList.size(); i++) {
-                    Bukkit.broadcastMessage("for statement hit");
+                for (int i = 0; i < playerList.size(); i++) {
                     if (i != playerList.size()) {
                         Player player = playerList.get(i);
-                        Bukkit.broadcastMessage("player1 is " + player.getName());
                         Location location = playerList.get(i + 1).getLocation();
-                        Bukkit.broadcastMessage("player2 is " + playerList.get(i + 1).getName());
                         player.teleport(location);
                         playerList.get(i).getPlayer().sendMessage("You swapped with " + playerList.get(i + 1).getName());
                     } else {
