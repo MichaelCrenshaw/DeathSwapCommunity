@@ -27,7 +27,7 @@ public class DeathSwapStart implements CommandExecutor {
             deathSwapManager.getPlayerList().add(player);
         }
         deathSwapManager.removeExempt(plugin.getExemptPlayers());
-        Bukkit.broadcastMessage("Death swap is starting in ten seconds, get ready!");
+        Bukkit.broadcastMessage("§4Death swap is starting in ten seconds, get ready!");
         Bukkit.getScheduler().runTaskLater(plugin, deathSwapManager, 200);
         return true;
     }

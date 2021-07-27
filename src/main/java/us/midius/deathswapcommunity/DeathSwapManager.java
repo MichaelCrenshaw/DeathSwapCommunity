@@ -32,7 +32,7 @@ public class DeathSwapManager implements Runnable{
         } else {
             if (playerList.size() > 1) {
                 Location firstLoc = playerList.get(0).getLocation();
-                for (int i = 0; i < playerList.size(); i++) {
+                for (int i = 0; i <= playerList.size(); i++) {
                     if (i != playerList.size()) {
                         Player player = playerList.get(i);
                         Location location = playerList.get(i + 1).getLocation();
