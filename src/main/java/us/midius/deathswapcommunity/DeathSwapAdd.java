@@ -21,8 +21,8 @@ public class DeathSwapAdd implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length == 1) {
-            if (plugin.getExemptPlayers().remove(args[0])){
-                sender.sendMessage("Player removed");
+            if (plugin.getExemptPlayers().remove(Bukkit.getPlayer(args[0]))){
+                sender.sendMessage("Player added");
                 return true;
             } else {
                 sender.sendMessage("Player not found");

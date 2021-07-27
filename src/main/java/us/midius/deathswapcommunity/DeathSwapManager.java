@@ -58,24 +58,6 @@ public class DeathSwapManager implements Runnable{
         return (int) (((Math.random() * (max - min)) + min) * 20) - 100; //creates random number in range, converts to ticks, removes five seconds, casts to int.
     }
 
-    @EventHandler
-    public void onDeath (PlayerDeathEvent event) {
-        Bukkit.broadcastMessage("onDeaty called");
-        Player player = event.getEntity();
-        int index = playerList.indexOf(player) -1;
-        Bukkit.broadcastMessage("passed declarations");
-        if (index == -1) {
-            index = playerList.size();
-        } else {}
-        Bukkit.broadcastMessage("passed if statement");
-        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "scoreboard " + playerList.get(index).getName() + " add 1");
-        player.setGameMode(GameMode.SPECTATOR);
-        Bukkit.broadcastMessage("gamemode set");
-        event.setDeathMessage(event.getDeathMessage() + "\n" + player.getName() + " died to " + playerList.get(index).getName());
-        playerList.remove(player);
-        return;
-    }
-
     public void printGameEnd(Player winner) {
         Bukkit.broadcastMessage("The winner is " + winner.getName() + "!" + "\n Top killers: \n" + Bukkit.getScoreboardManager().getMainScoreboard().getScores("kills"));
         Scoreboard scoreboard = Bukkit.getScoreboardManager().getMainScoreboard();

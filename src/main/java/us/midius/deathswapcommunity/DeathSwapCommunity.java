@@ -29,6 +29,8 @@ public final class DeathSwapCommunity extends JavaPlugin {
         }
         deathSwapManager = new DeathSwapManager(this);
         deathSwapAnnouncer = new DeathSwapAnnouncer(deathSwapManager, this);
+        DeathListener listener = new DeathListener(deathSwapManager);
+        Bukkit.getServer().getPluginManager().registerEvents(listener, this);
         this.getCommand("ds").setExecutor(new DeathSwap());
         this.getCommand("ds-start").setExecutor(new DeathSwapStart(deathSwapManager, this));
         this.getCommand("ds-delay").setExecutor(new DeathSwapDelay(this));
