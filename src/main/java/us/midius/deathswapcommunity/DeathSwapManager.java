@@ -60,13 +60,17 @@ public class DeathSwapManager implements Runnable{
 
     @EventHandler
     public void onDeath (PlayerDeathEvent event) {
-        Player player = event.getEntity().getPlayer();
+        Bukkit.broadcastMessage("onDeaty called");
+        Player player = event.getEntity();
         int index = playerList.indexOf(player) -1;
+        Bukkit.broadcastMessage("passed declarations");
         if (index == -1) {
             index = playerList.size();
         } else {}
+        Bukkit.broadcastMessage("passed if statement");
         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "scoreboard " + playerList.get(index).getName() + " add 1");
         player.setGameMode(GameMode.SPECTATOR);
+        Bukkit.broadcastMessage("gamemode set");
         event.setDeathMessage(event.getDeathMessage() + "\n" + player.getName() + " died to " + playerList.get(index).getName());
         playerList.remove(player);
         return;
