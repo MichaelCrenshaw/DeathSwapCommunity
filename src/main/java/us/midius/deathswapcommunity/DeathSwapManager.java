@@ -27,6 +27,7 @@ public class DeathSwapManager implements Runnable{
     public void run() {
         if (plugin.isEmergencyStop()) {
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "scoreboard players reset @a kills");
+            playerList.clear();
             return;
         }
         if (playerList.size() > 1) {
@@ -34,7 +35,9 @@ public class DeathSwapManager implements Runnable{
             for (int i = 0; i > playerList.size(); i++) {
                 if (i != playerList.size()) {
                     Player player = playerList.get(i);
+                    Bukkit.broadcastMessage("player1 is " + player.getName());
                     Location location = playerList.get(i+1).getLocation();
+                    Bukkit.broadcastMessage("player2 is " + playerList.get(i+1).getName());
                     player.teleport(location);
                     playerList.get(i).getPlayer().sendMessage("You swapped with " + playerList.get(i+1).getName());
                 } else {
@@ -72,6 +75,7 @@ public class DeathSwapManager implements Runnable{
         Scoreboard scoreboard = Bukkit.getScoreboardManager().getMainScoreboard();
         scoreboard.getObjective("kills").unregister();
         this.kills = Bukkit.getScoreboardManager().getMainScoreboard().registerNewObjective("kills", "dummy", "Kills");
+        playerList.clear();
     }
 
     public void removeExempt (ArrayList<Player> exemptList) {
