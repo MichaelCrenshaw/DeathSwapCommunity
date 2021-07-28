@@ -6,6 +6,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.scoreboard.DisplaySlot;
 
 import java.util.ArrayList;
 
@@ -27,6 +28,9 @@ public class DeathSwapStart implements CommandExecutor {
             deathSwapManager.getPlayerList().add(player);
         }
         deathSwapManager.removeExempt(plugin.getExemptPlayers());
+        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "scoreboard objectives setdisplay list health");
+        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "scoreboard objectives setdisplay belowName health");
+        deathSwapManager.kills.setDisplaySlot(DisplaySlot.SIDEBAR);
         Bukkit.broadcastMessage("§4Death swap is starting in ten seconds, get ready!");
         Bukkit.getScheduler().runTaskLater(plugin, deathSwapManager, 200);
         return true;

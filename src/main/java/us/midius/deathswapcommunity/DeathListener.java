@@ -22,13 +22,13 @@ public class DeathListener implements Listener {
         ArrayList<Player> playerList = DSManager.getPlayerList();
         Bukkit.broadcastMessage("onDeaty called");
         Player player = event.getEntity();
-        int index = playerList.indexOf(player) -1;
+        int index = playerList.indexOf(player) + 1;
         Bukkit.broadcastMessage("passed declarations");
-        if (index == -1) {
-            index = playerList.size();
+        if ((index-1) > playerList.size()) {
+            index = 0;
         } else {}
         Bukkit.broadcastMessage("passed if statement");
-        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "scoreboard " + playerList.get(index).getName() + " add 1");
+        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "scoreboard players add" + playerList.get(index).getName() + " kills 1");
         player.setGameMode(GameMode.SPECTATOR);
         Bukkit.broadcastMessage("gamemode set");
         event.setDeathMessage(event.getDeathMessage() + "\n" + player.getName() + " died to " + playerList.get(index).getName());

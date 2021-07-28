@@ -15,11 +15,12 @@ public class DeathSwapManager implements Runnable{
 
     private ArrayList<Player> playerList = new ArrayList<Player>();
     private DeathSwapCommunity plugin;
-    private Objective kills;
+    public Objective health;
+    public Objective kills;
 
     public DeathSwapManager(DeathSwapCommunity plugin) {
         this.plugin = plugin;
-        Objective health = Bukkit.getScoreboardManager().getMainScoreboard().registerNewObjective("health", Criterias.HEALTH, "Health", RenderType.HEARTS);
+        this.health = Bukkit.getScoreboardManager().getMainScoreboard().registerNewObjective("health", Criterias.HEALTH, "Health", RenderType.HEARTS);
         this.kills = Bukkit.getScoreboardManager().getMainScoreboard().registerNewObjective("kills", "dummy", "Kills");
     }
 
