@@ -26,6 +26,7 @@ public class DeathSwapStart implements CommandExecutor {
         plugin.setEmergencyStop(false);
         for (Player player:Bukkit.getOnlinePlayers()) {
             deathSwapManager.getPlayerList().add(player);
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "gms **");
         }
         deathSwapManager.removeExempt(plugin.getExemptPlayers());
         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "scoreboard objectives setdisplay list health");

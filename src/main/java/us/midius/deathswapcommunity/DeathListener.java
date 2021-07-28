@@ -24,7 +24,7 @@ public class DeathListener implements Listener {
         Player player = event.getEntity();
         int index = playerList.indexOf(player) + 1;
         Bukkit.broadcastMessage("passed declarations");
-        if ((index-1) == playerList.size()) {
+        if (playerList.indexOf(player.getName()) == playerList.size()) {
             index = 0;
         } else {}
         Bukkit.broadcastMessage("passed if statement");
