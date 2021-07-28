@@ -20,23 +20,25 @@ public class DeathListener implements Listener {
     @EventHandler
     public void onPlayerDeath (PlayerDeathEvent event) {
         ArrayList<Player> playerList = DSManager.getPlayerList();
-        Bukkit.broadcastMessage("onDeaty called");
-        int index = playerList.indexOf(event.getEntity());
-        Player player = playerList.get(index);
-        int killerIndex = index + 1;
-        Bukkit.broadcastMessage("passed declarations");
-        if (killerIndex == playerList.size()) {
-            killerIndex = 0;
+        if (playerList.size() > 1) {
+            int index = playerList.indexOf(event.getEntity());
+            Player player = playerList.get(index);
+            int killerIndex = index + 1;
+            if (killerIndex == playerList.size()) {
+                killerIndex = 0;
+            } else {
+                killerIndex = index + 1;
+            }
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "scoreboard players add " + playerList.get(killerIndex).getName() + " kills 1");
+            player.setGameMode(GameMode.SPECTATOR);
+            event.setDeathMessage(event.getDeathMessage() + "\n" + player.getName() + " died to " + playerList.get(killerIndex).getName());
+            playerList.remove(player);
+            return;
         } else {
-            killerIndex = index + 1;
+            Player player = event.getEntity();
+            player.setGameMode(GameMode.SPECTATOR);
+            playerList.remove(player);
         }
-        Bukkit.broadcastMessage("passed if statement");
-        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "scoreboard players add " + playerList.get(killerIndex).getName() + " kills 1");
-        player.setGameMode(GameMode.SPECTATOR);
-        Bukkit.broadcastMessage("gamemode set");
-        event.setDeathMessage(event.getDeathMessage() + "\n" + player.getName() + " died to " + playerList.get(killerIndex).getName());
-        playerList.remove(player);
-        return;
     }
 
 }
