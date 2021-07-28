@@ -1,12 +1,8 @@
 package us.midius.deathswapcommunity;
 
 import org.bukkit.Bukkit;
-import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.scoreboard.*;
 
 import java.util.ArrayList;
@@ -47,7 +43,7 @@ public class DeathSwapManager implements Runnable{
                     }
                 }
             } else {
-                printGameEnd(playerList.get(0));
+                endGame(playerList.get(0));
                 return;
             }
         }
@@ -59,11 +55,9 @@ public class DeathSwapManager implements Runnable{
         return (int) (((Math.random() * (max - min)) + min) * 20) - 100; //creates random number in range, converts to ticks, removes five seconds, casts to int.
     }
 
-    public void printGameEnd(Player winner) {
-        Bukkit.broadcastMessage("The winner is " + winner.getName() + "!" + "\n Top killers: \n" + Bukkit.getScoreboardManager().getMainScoreboard().getScores("kills"));
+    public void endGame(Player winner) {
         Scoreboard scoreboard = Bukkit.getScoreboardManager().getMainScoreboard();
-        scoreboard.getObjective("kills").unregister();
-        this.kills = Bukkit.getScoreboardManager().getMainScoreboard().registerNewObjective("kills", "dummy", "Kills");
+        Bukkit.broadcastMessage("The winner is " + winner.getName() + "!");
         playerList.clear();
     }
 

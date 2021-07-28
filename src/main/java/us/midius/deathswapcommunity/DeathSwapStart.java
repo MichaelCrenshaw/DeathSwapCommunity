@@ -29,6 +29,8 @@ public class DeathSwapStart implements CommandExecutor {
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "gms **");
         }
         deathSwapManager.removeExempt(plugin.getExemptPlayers());
+        Bukkit.getScoreboardManager().getMainScoreboard().getObjective("kills").unregister();
+        deathSwapManager.kills = Bukkit.getScoreboardManager().getMainScoreboard().registerNewObjective("kills", "dummy", "Kills");
         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "scoreboard objectives setdisplay list health");
         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "scoreboard objectives setdisplay belowName health");
         deathSwapManager.kills.setDisplaySlot(DisplaySlot.SIDEBAR);
